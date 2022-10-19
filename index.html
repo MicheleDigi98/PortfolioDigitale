@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Portfolio digitale di Michele Digiacomo</title>
+        <style>
+            @import "Style/main.css";
+        </style>
+    </head>
+    <body>
+        <div class="mainMenu">
+            <p class="menuItem selected" menuIndex="0" onclick="chengeView(0)">Home</p>
+            <p class="menuItem" menuIndex="1" onclick="chengeView(1)">Projects</p>
+            <p class="menuItem" menuIndex="2" onclick="chengeView(2)">In progress</p>
+            <p class="menuItem rightElement" menuIndex="3" onclick="chengeView(3)">About me</p>
+        </div>
+        <div class="mainContent" id="mainContent">
+            <!--Content della pagina-->
+        </div>
+        <div class="footer">
+            <a class="footerElement" href="https://www.linkedin.com/in/michele-digiacomo-188a54250/">
+                <img class="footerElementImage" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" />
+                Linkedin
+            </a>
+            <a class="footerElement" href="https://github.com/MicheleDigi98">
+                <img class="footerElementImage" src="https://git-scm.com/images/logos/downloads/Git-Icon-Black.png" />
+                GitHub
+            </a>
+            <a class="footerElement" href="https://www.instagram.com/micheledigi98/">
+                <img class="footerElementImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" />
+                Instagram
+            </a>
+            <p class="footerElement">Email: micheledigiacomota98@gmail.com</p>
+            <p class="footerElement">Telefono: +39 3934669397</p>
+        </div>
+    </body>
+    <script type="text/javascript">
+        let mainContent = document.getElementById("mainContent");
+
+        let pages = [
+            "./InnerPages/Home.html",
+            "./InnerPages/Projects.php",
+            "./InnerPages/InProgress.html",
+            "./InnerPages/AboutMe.html"
+        ]
+
+        /**
+         * Cambia la vista corrente
+         * @param newIndex{number} Nuvo index di visualizzazione
+         */
+        function chengeView(newIndex){
+            let elements = document.querySelectorAll("[menuIndex]");
+            elements.forEach(value => {
+                let menuIndex = parseInt(value.getAttribute("menuIndex"));
+                if(menuIndex === newIndex)
+                    value.classList.add("selected");
+                else value.classList.remove("selected");
+
+                if(pages[newIndex] !== undefined){
+                    let ajax = new XMLHttpRequest();
+                    ajax.addEventListener("readystatechange", () => {
+                        if(ajax.readyState === 4 && ajax.status === 200) {
+                            mainContent.innerHTML = ajax.response;
+                        }
+                    });
+                    ajax.open("GET", pages[newIndex], false);
+                    ajax.send();
+                }else mainContent.innerHTML = "";
+            });
+        }
+
+        chengeView(0);
+    </script>
+</html>

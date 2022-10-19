@@ -1,0 +1,222 @@
+*{
+    --backgroundColor: rgb(240, 240, 240);
+    --contentSize: 60vw;
+
+    --topZ: 100;
+    --midZ: 50;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    user-select: none;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--backgroundColor);
+    padding: 2vh;
+}
+
+.mainMenu{
+    --menuBackgroundColor: rgb(255, 255, 255);
+
+    --menuItemTextColor: rgb(50, 50, 50);
+    --menuItemPadding: 3vh;
+    --menuItemFontSize: 2.4vh;
+
+    --menuItemUnderlineColor: #51D1FF;
+    --menuItemUnderlineSize: 0.2vh;
+
+    display: flex;
+
+    width: var(--contentSize);
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 10px;
+
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    box-shadow: black 0 0 10px;
+
+    z-index: var(--topZ);
+
+    background-color: var(--menuBackgroundColor);
+}
+
+.mainMenu .menuItem{
+    font-size: var(--menuItemFontSize);
+    color: var(--menuItemTextColor);
+
+    padding: calc(var(--menuItemPadding) * 0.5);
+
+    height: 100%;
+    min-width: 10%;
+
+    text-align: center;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.mainMenu .menuItem.selected{
+    cursor: auto;
+}
+
+.mainMenu .menuItem::before{
+    content: "";
+
+    background-color: var(--menuItemUnderlineColor);
+
+    width: 0;
+    height: var(--menuItemUnderlineSize);
+
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateY(-100%) translateX(-50%);
+
+    transition-duration: 0.2s;
+}
+
+.mainMenu .menuItem:hover::before, .menuItem.selected::before{
+    width: 80%;
+}
+
+.mainMenu .menuItem.rightElement{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.mainContent{
+    --contentBackgroundColor: rgb(240, 240, 240);
+    --contentPadding: 10vh;
+    --contentTopPadding: 5vh;
+
+    --contentTextColor: rgb(50, 50, 50);
+    --contentTopMargin: 1.5vh;
+    --contentFontSize: 2vh;
+    --contentTitleFontSize: 3vh;
+
+    width: var(--contentSize);
+
+    flex-grow: 1;
+
+    padding: var(--contentPadding);
+    padding-top: var(--contentTopPadding);
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: var(--contentBackgroundColor);
+
+    overflow-y: auto;
+}
+
+.mainContent::-webkit-scrollbar {
+    width: 3px;
+}
+
+.mainContent::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.mainContent::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.mainContent::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.mainContent *{
+    color: var(--contentTextColor);
+    font-size: var(--contentFontSize);
+
+    margin-top: var(--contentTopMargin);
+    text-align: center;
+}
+
+.mainContent h1{
+    font-size: var(--contentTitleFontSize);
+    border-bottom: 0.2vh rgb(50, 50, 50) solid;
+}
+
+.mainContent li{
+    text-align: left;
+}
+
+.footer{
+    --footerElementFontSize: 1.2vh;
+    --footerElementTextColor: rgb(50, 50, 50);
+    --footerElementPadding: 2vh;
+
+    --footerElementImageRightMargin: 0.5vh;
+
+    display: flex;
+
+    width: var(--contentSize);
+    margin-left: auto;
+    margin-right: auto;
+
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    z-index: var(--topZ);
+    background-color: var(--backgroundColor);
+}
+
+.footer .footerElement{
+    display: flex;
+
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    color: var(--footerElementTextColor);
+
+    padding: calc(var(--footerElementPadding) * 0.5);
+
+    font-size: var(--footerElementFontSize);
+    text-transform: uppercase;
+
+    min-width: 10%;
+}
+
+.footer .footerElementImage{
+    display: block;
+
+    aspect-ratio: 1 / 1;
+    height: calc( var(--footerElementFontSize) * 1.5 );
+
+    margin-right: var(--footerElementImageRightMargin);
+}
+
+.footer .footerElement:visited{
+    color: var(--footerElementTextColor);
+}
+
+@media screen and (max-width: 1000px) {
+    *{
+        --contentSize: 95vw;
+    }
+
+    .mainContent{
+        --contentPadding: 2vh;
+        --contentTopPadding: 1vh;
+    }
+}
