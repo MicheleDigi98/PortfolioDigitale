@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+
+.HomepageContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  >h2{
+    margin-top: 30px;
+  }
+}

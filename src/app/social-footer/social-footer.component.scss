@@ -1,0 +1,22 @@
+@import "../../styles";
+
+.SocialFooterContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  >a, >span{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    color: $text-color-dark;
+    align-items: flex-end;
+    >img{
+      aspect-ratio: 1 / 1;
+      display: block;
+      width: 16px;
+    }
+  }
+}

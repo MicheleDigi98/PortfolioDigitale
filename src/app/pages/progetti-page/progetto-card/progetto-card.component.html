@@ -1,0 +1,8 @@
+<div class="CardContainer">
+  <h2>{{this.progettoMetadata.nome}}</h2>
+  <p
+    *ngIf="this.progettoMetadata.descrizione"
+    [innerHTML]="this.progettoMetadata.descrizione">
+  </p>
+  <a [href]="this.progettoMetadata.path">Vai al progetto ></a>
+</div>

@@ -1,0 +1,67 @@
+@import "../../../styles.scss";
+
+.MenuHeaderItemContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+
+  &.selected, &:hover{
+    &::after{
+      height: 4px;
+    }
+  }
+
+  &::after{
+    content: "";
+    position: absolute;
+    top: calc(100% + 5px);
+    transform: translateY(-100%);
+    left: 0;
+
+    width: 100%;
+    height: 0;
+    background-color: $text-color-dark;
+
+    border-radius: 2px;
+    transition-duration: 0.2s;
+  }
+
+  >img{
+    filter: invert(1) opacity(0.8);
+    @media #{$on_desktop_only} {
+      width: $headingSize * 1.5;
+    }
+
+    @media #{$on_tablet_only} {
+      width: $headingSizeTablet * 1.5;
+    }
+
+    @media #{$on_mobile_only} {
+      display: none;
+    }
+  }
+
+  >span{
+    color: $text-color-dark;
+    font-size: 24px;
+    white-space: nowrap;
+    font-weight: 800;
+
+    @media #{$on_desktop_only} {
+      font-size: $menuSize;
+    }
+
+    @media #{$on_tablet_only} {
+      font-size: $menuSizeTablet;
+    }
+
+    @media #{$on_mobile_only} {
+      font-size: $menuSizeMobile;
+    }
+  }
+}

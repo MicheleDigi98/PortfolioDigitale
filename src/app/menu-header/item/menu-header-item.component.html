@@ -1,0 +1,9 @@
+@if (this.item){
+  <div
+    class="MenuHeaderItemContainer"
+    [ngClass]="{selected}"
+    (click)="this.onClick.emit(true)">
+    <img [src]="item.iconPath" alt="{{this.item.idItem}}">
+    <span>{{this.item.labelItem}}</span>
+  </div>
+}

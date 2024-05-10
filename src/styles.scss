@@ -1,1 +1,130 @@
-/* You can add global styles to this file, and also import other style files */
+$color-background: #FFFFFF;
+$text-color-light: #FFFFFF;
+$text-color-dark: rgb(68, 68, 68);
+$text-color-dark-opacity: rgba(68, 68, 68, 0.5);
+
+// Taglie dei dispositivi
+$breakpoint-desktop: 1024px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 350px;
+
+// Variabili per controllare la visibilità dei contenuti sui diversi dispositivi
+$on_mobile_only: "only screen and (max-width: #{($breakpoint-tablet)})";
+$on_tablet_only: "only screen and (min-width: #{$breakpoint-tablet}) and (max-width: #{($breakpoint-desktop)})";
+$on_desktop_only: "only screen and (min-width: #{$breakpoint-desktop})";
+
+$headingSize: 24px;
+$headingSizeTablet: 22px;
+$headingSizeMobile: 18px;
+
+$menuSize: 20px;
+$menuSizeTablet: 18px;
+$menuSizeMobile: 16px;
+
+$titleSize: 24px;
+$titleSizeTablet: 22px;
+$titleSizeMobile: 18px;
+
+$title2Size: $titleSize * 0.9;
+$title2SizeTablet: $titleSizeTablet * 0.9;
+$title2SizeMobile: $titleSizeMobile * 0.9;
+
+$contentSize: $title2Size * 0.9;
+$contentSizeTablet: $title2SizeTablet * 0.9;
+$contentSizeMobile: $title2SizeMobile * 0.9;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+html, body{
+  height: 100%;
+}
+
+h1{
+  font-weight: 600;
+  color: $text-color-dark;
+  @media #{$on_desktop_only} {
+    font-size: $titleSize;
+  }
+
+  @media #{$on_tablet_only} {
+    font-size: $titleSizeTablet;
+  }
+
+  @media #{$on_mobile_only} {
+    font-size: $titleSizeMobile;
+  }
+}
+
+h2{
+  font-weight: 500;
+  color: $text-color-dark;
+  @media #{$on_desktop_only} {
+    font-size: $title2Size;
+  }
+
+  @media #{$on_tablet_only} {
+    font-size: $title2SizeTablet;
+  }
+
+  @media #{$on_mobile_only} {
+    font-size: $title2SizeMobile;
+  }
+}
+
+p, li{
+  text-align: justify;
+  color: $text-color-dark;
+  @media #{$on_desktop_only} {
+    font-size: $contentSize;
+  }
+
+  @media #{$on_tablet_only} {
+    font-size: $contentSizeTablet;
+  }
+
+  @media #{$on_mobile_only} {
+    font-size: $contentSizeMobile;
+  }
+}
+
+li{
+  margin-left: 30px;
+  >b{
+    color: $text-color-dark;
+    font-weight: 400;
+    display: block;
+  }
+}
+
+@media #{$on_mobile_only} {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $text-color-dark-opacity;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $text-color-dark;
+}

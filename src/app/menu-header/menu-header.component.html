@@ -1,0 +1,12 @@
+<div class="MenuHeaderContainer">
+  <img src="/assets/Logo.png" alt="logo">
+  <div class="MenuHeaderItemsContainer">
+    @for (item of this.listaVoci; track item.idItem){
+      <menu-header-item
+        [item]="item"
+        [selected]="this.voceSelezionata === item.idItem"
+        (onClick)="this.onVoceSelezionataChange.emit(item.idItem)">
+      </menu-header-item>
+    }
+  </div>
+</div>

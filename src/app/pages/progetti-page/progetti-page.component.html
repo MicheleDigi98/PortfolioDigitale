@@ -1,0 +1,18 @@
+@if (this.isLoading){
+  <h1 class="CaricamentoHeading">Stiamo caricando i progetti...</h1>
+} @else {
+  <dot-layout>
+    <div class="CardProgettiContainer">
+      @for (anno of this.listaAnni; track anno){
+        <h1 DotDirective [style.order]="this.calcolaOrdineTitolo(anno)">{{anno}}</h1>
+      }
+      @for (progetto of this.listaProgetti; track progetto.nome; let i = $index){
+        <progetto-card
+          style="margin-left: 18px"
+          [style.order]="this.calcolaOrdineCard(progetto.annoCreazione, i)"
+          [progettoMetadata]="progetto">
+        </progetto-card>
+      }
+    </div>
+  </dot-layout>
+}
