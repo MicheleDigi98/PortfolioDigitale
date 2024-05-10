@@ -1,4 +1,5 @@
-import {Injectable} from "@angular/core";
+import {Inject, Injectable, PLATFORM_ID} from "@angular/core";
+import {isPlatformBrowser} from "@angular/common";
 
 export type Data = {[key: string]: any};
 
@@ -6,6 +7,11 @@ export type Data = {[key: string]: any};
   providedIn: 'root'
 })
 export class RestService{
+  constructor(
+    @Inject(PLATFORM_ID) private _platformId: string,
+  ) {
+  }
+
   private async _basicMethod<T = Data>(method: 'get' | 'post' | 'put' | 'delete', endpoint: string, data?: Data): Promise<T | false>{
     let esito: T | false = false;
 
@@ -19,7 +25,7 @@ export class RestService{
         esito = (await response.json()) as T;
       }
     }catch (e){
-      console.error("Errore invocazione metodo", method, e);
+      isPlatformBrowser(this._platformId) && console.error("Errore invocazione metodo", method, e);
     }
 
     return esito;
@@ -39,7 +45,7 @@ export class RestService{
               const jsonObject = JSON.parse(xmlHttpRequest.responseText);
               resolve(jsonObject);
             } catch (e){
-              console.error("Errore invocazione metodo", method, e);
+              isPlatformBrowser(this._platformId) && console.error("Errore invocazione metodo", method, e);
               resolve(esito);
             }
           }else{
@@ -90,7 +96,7 @@ export class RestService{
   public get baseUrl(): string{
     let esito = "";
 
-    if(window.location.href.includes('localhost')){
+    if(isPlatformBrowser(this._platformId) && window.location.href.includes('localhost')){
       esito = 'http://localhost/BackendBIGCompany'
     }
 
