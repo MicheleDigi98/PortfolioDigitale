@@ -5,11 +5,12 @@ import {SocialFooterComponent} from "./social-footer/social-footer.component";
 import {ProgettiPageComponent} from "./pages/progetti-page/progetti-page.component";
 import MenuHeaderItemModel from "../models/MenuHeaderItemModel";
 import {HomePageComponent} from "./pages/home-page/home-page.component";
+import {NotiziePageComponent} from "./pages/notizie-page/notizie-page.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuHeaderComponent, SocialFooterComponent, ProgettiPageComponent, HomePageComponent],
+  imports: [RouterOutlet, MenuHeaderComponent, SocialFooterComponent, ProgettiPageComponent, HomePageComponent, NotiziePageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

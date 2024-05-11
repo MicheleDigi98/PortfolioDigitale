@@ -31,7 +31,7 @@ export class RestService{
     return esito;
   }
 
-  private _basicMethodXMLHTTP<T = Data>(method: 'get' | 'post' | 'put' | 'delete', endpoint: string, data?: Data): Promise<T | false>{
+  private _basicMethodXMLHTTP<T = Data>(method: 'get' | 'post' | 'put' | 'delete', endpoint: string, data?: Data, convertJson = true): Promise<T | false>{
     return new Promise<T | false>(resolve => {
       let esito: T | false = false;
 
@@ -42,8 +42,10 @@ export class RestService{
         if(xmlHttpRequest.readyState === 4 ) {
           if(xmlHttpRequest.status === 200){
             try{
-              const jsonObject = JSON.parse(xmlHttpRequest.responseText);
-              resolve(jsonObject);
+              if(convertJson) {
+                const jsonObject = JSON.parse(xmlHttpRequest.responseText);
+                resolve(jsonObject);
+              }else resolve(xmlHttpRequest.responseText as T);
             } catch (e){
               isPlatformBrowser(this._platformId) && console.error("Errore invocazione metodo", method, e);
               resolve(esito);
@@ -65,8 +67,8 @@ export class RestService{
     return this._basicMethod<T>('get', endpoint, data);
   }
 
-  public getXML<T = Data>(endpoint: string, data?: Data): Promise<T | false> {
-    return this._basicMethodXMLHTTP<T>('get', endpoint, data);
+  public getXML<T = Data>(endpoint: string, data?: Data, convertJson = true): Promise<T | false> {
+    return this._basicMethodXMLHTTP<T>('get', endpoint, data, convertJson);
   }
 
   public put<T = Data>(endpoint: string, data?: Data): Promise<T | false> {

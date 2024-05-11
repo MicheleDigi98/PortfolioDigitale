@@ -1,16 +1,8 @@
 @import "../../../styles.scss";
 
-.CaricamentoHeading{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
-
 .CardProgettiContainer{
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 20px;
-  align-self: center;
 }
