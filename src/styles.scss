@@ -105,10 +105,13 @@ p, li{
 li{
   margin-left: 30px;
   >b{
-    color: $text-color-dark;
-    font-weight: 400;
     display: block;
   }
+}
+
+b{
+  color: $text-color-dark;
+  font-weight: 400;
 }
 
 .CaricamentoHeading{
