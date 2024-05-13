@@ -62,6 +62,11 @@ export class ScrollAnimationDirective {
   }
 
   public setPercentualeAttuale(origineContainer: number, altezzaContainer: number) {
+    const nativeElement = (this._elementRef.nativeElement as HTMLElement);
+    nativeElement.style.top = "0%";
+    nativeElement.style.left = "0%";
+    nativeElement.style.transform = "";
+
     const boundingClientRect = (this._elementRef.nativeElement as HTMLElement).getBoundingClientRect();
     this._percentualeAttualeVistaLayout = (1 - ((boundingClientRect.y - origineContainer) / altezzaContainer)) * 100;
 
@@ -75,6 +80,12 @@ export class ScrollAnimationDirective {
   }
 
   private _findByKey<T extends keyof KeyFrame>(key: T): string{
+    const debug = (...messages: any[]) => {
+      if(key === 'top' && false){
+        console.log(`${key}:`, ...messages);
+      }
+    }
+
     let percentualePrecedente = 0;
     let precedente = key.includes('scale') ? '1' :'0';
 
@@ -102,6 +113,8 @@ export class ScrollAnimationDirective {
       successivo = precedente;
     }
 
+    debug("Percentuale:", this._percentualeAttualeVistaLayout, "Precedente:", precedente, `[${percentualePrecedente}], Successivo:`, successivo, `[${percentualeSuccessivo}]`);
+
     const numberPrecedente = parseFloat(precedente);
     const numberSuccessivo = parseFloat(successivo);
     const percentualeAttualePesata = this._percentualeAttualeVistaLayout - percentualePrecedente;
@@ -110,6 +123,10 @@ export class ScrollAnimationDirective {
     let percentualeComputata = 1;
     if(percentualePrecedente !== percentualeSuccessivo && percentualeSuccessivoPesata !== 0)
       percentualeComputata = percentualeAttualePesata / percentualeSuccessivoPesata;
+    if(percentualeComputata > 1)
+      percentualeComputata = 1;
+    if(percentualeComputata < 0)
+      percentualeComputata = 0;
 
     const valoreAttuale = numberPrecedente + ( (numberSuccessivo - numberPrecedente) * percentualeComputata );
 

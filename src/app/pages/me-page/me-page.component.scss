@@ -1,15 +1,19 @@
+@import "../../../styles.scss";
+
 .center{
-  align-self: center;
-  text-align: center;
+  text-align: justify;
 }
 
 .fullSize{
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   flex-shrink: 0;
 }
 
 .anchor{
-  scroll-snap-align: start;
+  @media #{$on_mobile_only}{
+    scroll-snap-align: start;
+  }
 }
 
 .responsiveTwoColl{
@@ -34,12 +38,12 @@
   >.ScrollImageContainer{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     flex-grow: 1;
 
     >img{
-      width: 200px;
+      width: 40px;
       filter: invert(0.75);
 
       animation-duration: 0.8s;
@@ -53,7 +57,7 @@
       }
 
       50%{
-        transform: translateY(20px);
+        transform: translateY(0px);
       }
 
       100%{
