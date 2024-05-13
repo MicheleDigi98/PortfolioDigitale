@@ -23,5 +23,5 @@ export class AppComponent {
     {idItem: 'me', labelItem: 'Riguardo me', iconPath: 'assets/icons/aboutMeIcon.png'},
   ]
 
-  public voceSelezionata = 'me';
+  public voceSelezionata = 'home';
 }
