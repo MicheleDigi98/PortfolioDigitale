@@ -39,9 +39,10 @@ export class ProgettiPageComponent implements OnInit{
         annoNonSpecificatoPresente = true;
       this.listaProgetti.push(metadatiProgetto);
 
-      this.isLoading = false;
+
     }
 
+    this.isLoading = false;
     annoNonSpecificatoPresente && this.listaAnni.add('Anno non specificato');
   }
 

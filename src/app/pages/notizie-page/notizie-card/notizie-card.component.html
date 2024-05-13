@@ -1,0 +1,16 @@
+<div class="CardContainer">
+  <span class="CardHeader">
+    <img
+      *ngIf="this.blogMetadata.creatorImage"
+      class="CreatorImage"
+      [src]="this.baseUrl + this.blogMetadata.path + '/' + this.blogMetadata.creatorImage" />
+    <h1>{{this.blogMetadata.nome}}</h1>
+  </span>
+  <div
+    class="CardBody"
+    [innerHTML]="this.template">
+  </div>
+  <p *ngIf="this.blogMetadata.dataCreazione">
+    {{this.blogMetadata.dataCreazione}}
+  </p>
+</div>

@@ -68,6 +68,7 @@ h1{
 h2{
   font-weight: 500;
   color: $text-color-dark;
+  margin-top: 30px !important;
   @media #{$on_desktop_only} {
     font-size: $title2Size;
   }
@@ -95,15 +96,29 @@ p, li{
   @media #{$on_mobile_only} {
     font-size: $contentSizeMobile;
   }
+
+  >a{
+    color: $text-color-dark;
+  }
 }
 
 li{
   margin-left: 30px;
   >b{
-    color: $text-color-dark;
-    font-weight: 400;
     display: block;
   }
+}
+
+b{
+  color: $text-color-dark;
+  font-weight: 400;
+}
+
+.CaricamentoHeading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 @media #{$on_mobile_only} {

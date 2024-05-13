@@ -1,0 +1,9 @@
+@if (this.isLoading){
+  <h1 class="CaricamentoHeading">Stiamo caricando le informazioni del blog...</h1>
+} @else {
+  <div class="NotizieContainer">
+    @for (blog of listaBlog; track blog.nome){
+      <notizie-card [blogMetadata]="blog"></notizie-card>
+    }
+  </div>
+}
